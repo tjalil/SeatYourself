@@ -4,7 +4,7 @@ class RestaurantOwnerSessionsController < ApplicationController
   end
 
   def create
-    restaurant_owner = Restaurant_owner.find_by_email(params[:email])
+    restaurant_owner = RestaurantOwner.find_by_email(params[:email])
     if restaurant_owner && restaurant_owner.authenticate(params[:password])
       session[:restaurant_owner_id] = restaurant_owner.id 
       redirect_to restaurants_path, notice: "Welcome back #{restaurant_owner.first_name}!"

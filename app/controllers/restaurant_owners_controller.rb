@@ -7,11 +7,11 @@ class RestaurantOwnersController < ApplicationController
   end
 
   def new
-    @restaurant_owner = Restaurant_owner.new
+    @restaurant_owner = RestaurantOwner.new
   end
 
   def create
-    @restaurant_owner = Restaurant_owner.new(restaurant_owner_params)
+    @restaurant_owner = RestaurantOwner.new(restaurant_owner_params)
     if @restaurant_owner.save
       redirect_to restaurants_path, notice: "Welcome to SeatYourself, #{@restaurant_owner.first_name} #{@restaurant_owner.last_name}"
     else
