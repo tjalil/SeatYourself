@@ -11,14 +11,15 @@ class RestaurantsController < ApplicationController
   end
 
   def show
+    redirect_to restaurant_path(@restaurant)
   end
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
-    @restaurant.owner_id = current_owner.id
+    @restaurant.restaurant_owner_id = current_owner.id
 
     if @restaurant.save
-      redirect_to restaurants_path, notice: "#{@restaurant.name} is now active on SeatYourself." 
+      redirect_to restaurant_path(@restaurant), notice: "#{@restaurant.name} is now active on SeatYourself." 
     else
       render :new
     end
