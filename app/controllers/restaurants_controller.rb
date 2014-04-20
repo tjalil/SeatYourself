@@ -16,9 +16,9 @@ class RestaurantsController < ApplicationController
   def create
     @restaurant = Restaurant.new(restaurant_params)
     @restaurant.owner_id = current_owner.id
-    
+
     if @restaurant.save
-      redirect_to restaurant_path(@restaurant)
+      redirect_to restaurants_path, notice: "#{@restaurant.name} is now active on SeatYourself." 
     else
       render :new
     end
@@ -31,6 +31,8 @@ class RestaurantsController < ApplicationController
   end
 
   def destroy
+    @restaurant.destroy
+    redirect_to restaurants_path
   end
 
   private
