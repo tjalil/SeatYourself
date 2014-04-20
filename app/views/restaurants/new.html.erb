@@ -1,4 +1,17 @@
 <%= form_for @restaurant do |f| %>
+  <% if @restaurant.errors.any %>
+    <div id = "errors_explanation">
+      <h2>
+        <%= pluralize(@restaurant.errors.count, "error") %> prohibited this restaurant from being created
+      </h2>
+      <ul>
+        <% @restaurant.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <%= f.label :name %>
   <%= f.text_field :name %>
 
@@ -8,5 +21,6 @@
   <%= f.label :description %>
   <%= f.text_field :description %>
 
-  <%= f.submit "Create" %>
+  <%= f.submit "Create Restaurant" %>
+
 <% end %>
