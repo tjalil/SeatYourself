@@ -3,17 +3,25 @@ class RestaurantsController < ApplicationController
   before_action :find_restaurant, only: [:show, :edit, :update, :destroy]
 
   def index
-    @restaurants = Restaurant.all
+    # @restaurants = Restaurant.all
   end
 
   def new
-    @restaurant = Restaurant.new(restaurant_params)
+    @restaurant = Restaurant.new
   end
 
   def show
   end
 
   def create
+    @restaurant = Restaurant.new(restaurant_params)
+    @restaurant.owner_id = current_owner.id
+    
+    if @restaurant.save
+      redirect_to restaurant_path(@restaurant)
+    else
+      render :new
+    end
   end
 
   def edit
