@@ -1,0 +1,19 @@
+<h2>Log In - User</h2>
+
+<%= form_tag user_sessions_path do %>
+  
+  <div class = "field">
+    <%= label_tag :email %>
+    <%= email_field_tag :email, params[:email] %>
+  </div>
+
+  <div class = "field">
+    <%= label_tag :password %>
+    <%= password_field_tag :password, params[:password] %>
+  </div>
+
+  <div class = "actions">
+    <%= submit_tag "Log In" %>
+  </div>
+
+<% end %>
