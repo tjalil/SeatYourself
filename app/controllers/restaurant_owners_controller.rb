@@ -1,9 +1,14 @@
 class RestaurantOwnersController < ApplicationController
 
+  before_action :find_restaurant_owner, only: [:show, :edit, :update, :destroy]
+
   def index
   end
 
   def show
+    if current_restaurant_owner
+      @restaurant = @restaurant_owner.restaurants.build
+    end
   end
 
   def new
@@ -35,5 +40,9 @@ class RestaurantOwnersController < ApplicationController
 
   def restaurant_owner_params
     params.require(:restaurant_owner).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+  end
+
+  def find_restaurant_owner
+    @restaurant_owner = RestaurantOwner.find(params[:id])
   end
 end

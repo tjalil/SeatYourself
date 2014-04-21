@@ -5,13 +5,12 @@ class Restaurant < ActiveRecord::Base
   belongs_to :restaurant_owner
 
   validates_presence_of :name, :address, :description
-  before_save :text_capitalize
+  before_save :name_capitalize
 
   private
 
-  def text_capitalize
-    self.name = self.name.capitalize
-    self.description = self.description.capitalize
+  def name_capitalize
+    self.name = self.name.split.map(&:capitalize).join(' ')
   end
   
 end

@@ -1,25 +1,23 @@
 class RestaurantsController < ApplicationController
 
-  before_action :find_restaurant, only: [:show, :edit, :update, :destroy]
+  before_action :load_restaurant_owner
 
   def index
-    @restaurants = Restaurant.all
+  end
+
+  def show
   end
 
   def new
     @restaurant = Restaurant.new
   end
 
-  def show
-    redirect_to restaurant_path(@restaurant)
-  end
-
   def create
-    @restaurant = Restaurant.new(restaurant_params)
-    @restaurant.restaurant_owner_id = current_owner.id
+    @restaurant = @restaurant_owner.restaurants.build(restaurant_params)
+    @restaurant.restaurant_owner_id = current_restaurant_owner.id
 
     if @restaurant.save
-      redirect_to restaurant_path(@restaurant), notice: "#{@restaurant.name} is now active on SeatYourself." 
+      redirect_to restaurant_owner_path(@restaurant_owner), notice: "#{@restaurant.name} is now active on SeatYourself." 
     else
       render :new
     end
@@ -32,6 +30,7 @@ class RestaurantsController < ApplicationController
   end
 
   def destroy
+    @restaurant = @restaurant.find(params[:id])
     @restaurant.destroy
     redirect_to restaurants_path
   end
@@ -39,11 +38,11 @@ class RestaurantsController < ApplicationController
   private
 
   def restaurant_params
-    params.require(:restaurant).permit(:name, :address, :description)
+    params.require(:restaurant).permit(:name, :address, :description, :restaurant_owner_id)
   end
 
-  def find_restaurant
-    @restaurant = Restaurant.find(params[:id])
+  def load_restaurant_owner
+    @restaurant_owner = RestaurantOwner.find(current_restaurant_owner.id)
   end
 
 end

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Seatyourself</title>
+  <title>SeatYourself by Taha Jalil</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -10,7 +10,7 @@
 
   <%= render "layouts/header" %>
 
-  <div class = "flash">
+  <div class = "flash" style = "text-align: center">
     <% if flash[:notice] %>
       <p id = "notice", style = "color: green"><%= flash[:notice] %></p>
     <% end %>
@@ -20,10 +20,8 @@
   </div>
 
   <% if current_page?(controller: "restaurants", action: "index") == false %>
-    <%= link_to "Back to Homepage", restaurants_path %>
+    | <%= link_to "Back to Homepage", restaurants_path %>
   <% end %>
-
-  
 
   <%= yield %>
 

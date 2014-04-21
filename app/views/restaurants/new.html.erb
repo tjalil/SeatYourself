@@ -1,36 +1,41 @@
-<h2>Create a New Restaurant</h2>
+<% if current_restaurant_owner %>
 
-<%= form_for @restaurant do |f| %>
-  <% if @restaurant.errors.any %>
-    <div id = "errors_explanation">
-      <h2>
-        <%= pluralize(@restaurant.errors.count, "error") %> prohibited this restaurant from being created
-      </h2>
-      <ul>
-        <% @restaurant.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
+  <h3>Create a New Restaurant</h3>
+
+  <%= form_for [@restaurant_owner, @restaurant] do |f| %>
+    <% if @restaurant.errors.any? %>
+      <div id = "errors_explanation">
+        <h2>
+          <%= pluralize(@restaurant.errors.count, "error") %> prohibited this restaurant from being created
+        </h2>
+        <ul>
+          <% @restaurant.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class = "field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
     </div>
+
+    <div class = "field">
+      <%= f.label :address %>
+      <%= f.text_field :address %>
+    </div>
+
+    <div class = "field">
+      <%= f.label :description %>
+      <%= f.text_field :description %>
+    </div>
+
+    <div class = "actions">
+      <%= f.submit "Create Restaurant" %>
+    </div>
+
   <% end %>
-
-  <div class = "field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class = "field">
-    <%= f.label :address %>
-    <%= f.text_field :address %>
-  </div>
-
-  <div class = "field">
-    <%= f.label :description %>
-    <%= f.text_field :description %>
-  </div>
-
-  <div class = "actions">
-    <%= f.submit "Create Restaurant" %>
-  </div>
-
+<% else %>
+  <p>Please <%= link_to "Log In", new_restaurant_owner_session_path %> to add a new restaurant</p>
 <% end %>

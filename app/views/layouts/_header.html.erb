@@ -1,10 +1,21 @@
-<div class = "header", style = "float: right">
-  <% if current_user %>
-    Signed in as <%= current_user.first_name %> <%= current_user.last_name %> | <%= link_to "Logout", user_session_path("current"), method: :delete %>
-  <% elsif current_restaurant_owner %>
-    Signed in as <%= current_restaurant_owner.first_name %> <%= current_restaurant_owner.last_name %> | <%= link_to "Logout", restaurant_owner_session_path("current"), method: :delete %>
-  <% else %>
-    <%= link_to "Log In - User", new_user_session_path %> | <%= link_to "Sign Up - User", new_user_path %><br>
-    <%= link_to "Log In - Restaurant Owner", new_restaurant_owner_session_path %> | <%= link_to "Sign Up - Restaurant Owner", new_restaurant_owner_path %>
-  <% end %>
+<div class = "header">
+  <div class = "left", style = "float: left">
+    <% if current_user %>
+      <%= link_to "Back to My Dashboard", user_path(current_user.id) %> |
+    <% elsif current_restaurant_owner %>
+      <%= link_to "Back to My Dashboard", restaurant_owner_path(current_restaurant_owner.id) %> |
+    <% end %>
+  </div>
+
+  <div class = "right", style = "float: right">
+    <% if current_user %>
+      Signed in as <%= current_user.first_name %> <%= current_user.last_name %> | <%= link_to "Logout", user_session_path("current"), method: :delete %>
+    <% elsif current_restaurant_owner %>
+      Signed in as <%= current_restaurant_owner.first_name %> <%= current_restaurant_owner.last_name %> | <%= link_to "Logout", restaurant_owner_session_path("current"), method: :delete %>
+    <% else %>
+      <%= link_to "Log In - User", new_user_session_path %> | <%= link_to "Sign Up - User", new_user_path %><br>
+      <%= link_to "Log In - Restaurant Owner", new_restaurant_owner_session_path %> | <%= link_to "Sign Up - Restaurant Owner", new_restaurant_owner_path %>
+    <% end %>
+  </div>
 </div>
+
