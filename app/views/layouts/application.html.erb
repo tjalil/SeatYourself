@@ -8,7 +8,26 @@
 </head>
 <body>
 
-<%= yield %>
+  <%= render "layouts/header" %>
+
+  <div class = "flash">
+    <% if flash[:notice] %>
+      <p id = "notice", style = "color: green"><%= flash[:notice] %></p>
+    <% end %>
+    <% if flash[:alert] %>
+      <pid = "alert", style = "color: red"><%= flash[:alert] %></p>
+    <% end  %>
+  </div>
+
+  <% if current_page?(controller: "restaurants", action: "index") == false %>
+    <%= link_to "Back to Homepage", restaurants_path %>
+  <% end %>
+
+  
+
+  <%= yield %>
+
+  <%= render "layouts/footer" %>
 
 </body>
 </html>
