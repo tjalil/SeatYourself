@@ -6,9 +6,9 @@ class RestaurantOwnersController < ApplicationController
   end
 
   def show
-    if current_restaurant_owner
-      @restaurant = @restaurant_owner.restaurants.build
-    end
+    # if current_restaurant_owner
+    #   @restaurant = @restaurant_owner.restaurants.build
+    # end
   end
 
   def new

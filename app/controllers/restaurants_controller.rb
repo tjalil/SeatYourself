@@ -1,11 +1,13 @@
 class RestaurantsController < ApplicationController
 
-  before_action :load_restaurant_owner
+  before_action :load_restaurant_owner, only: [:create, :edit, :update, :destroy]
 
   def index
+    @restaurants = Restaurant.all
   end
 
   def show
+    @restaurant = Restaurant.find(params[:id])
   end
 
   def new
@@ -42,7 +44,7 @@ class RestaurantsController < ApplicationController
   end
 
   def load_restaurant_owner
-    @restaurant_owner = RestaurantOwner.find(current_restaurant_owner.id)
+    @restaurant_owner = RestaurantOwner.find(params[:restaurant_owner_id])
   end
 
 end
