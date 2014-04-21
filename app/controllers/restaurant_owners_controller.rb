@@ -14,7 +14,7 @@ class RestaurantOwnersController < ApplicationController
     @restaurant_owner = RestaurantOwner.new(restaurant_owner_params)
     if @restaurant_owner.save
       session[:restaurant_owner_id] = @restaurant_owner.id
-      redirect_to restaurants_path, notice: "Welcome to SeatYourself, #{@restaurant_owner.first_name}!"
+      redirect_to restaurant_owner_path(@restaurant_owner.id), notice: "Welcome to SeatYourself, #{@restaurant_owner.first_name}!"
     else
       render :new
     end

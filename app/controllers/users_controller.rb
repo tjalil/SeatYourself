@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to restaurants_path, notice: "Welcome to SeatYourself, #{@user.first_name}!"
+      redirect_to user_path(@user.id), notice: "Welcome to SeatYourself, #{@user.first_name}!"
     else
       render :new
     end
