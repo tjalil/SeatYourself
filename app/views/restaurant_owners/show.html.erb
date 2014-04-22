@@ -4,6 +4,7 @@
 
 <% @restaurant_owner.restaurants.each do |restaurant| %>
   <h3><%= link_to restaurant[:name], restaurant_path(restaurant) %></h3>
+  <p><strong>Timings:</strong> <em><%= restaurant[:opening_time].strftime('%l:%M %P') %> - <%= restaurant[:closing_time].strftime('%l:%M %P') %></em></p>
   <p style = "width: 350px"><strong>Description:</strong> <em><%= restaurant[:description] %></em></p>
   <p><strong>Address:</strong> <em><%= restaurant[:address] %></em></p>
   <p>____________________________________________</p>

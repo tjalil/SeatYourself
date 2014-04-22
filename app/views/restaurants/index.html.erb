@@ -1,7 +1,7 @@
 <br><h1>Website HomePage</h1>
 
 <div class = "index-restaurants" style = "text-align: center">
-  <h2>Restaurants open for reservation</h2>
+  <h2>Restaurants open for reservations</h2>
   <% @restaurants.each do |restaurant| %>
     <h3><%= link_to restaurant[:name], restaurant_path(restaurant) %></h3>
   <% end %>

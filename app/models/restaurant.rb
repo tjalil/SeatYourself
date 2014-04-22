@@ -12,5 +12,5 @@ class Restaurant < ActiveRecord::Base
   def name_capitalize
     self.name = self.name.split.map(&:capitalize).join(' ')
   end
-  
+
 end

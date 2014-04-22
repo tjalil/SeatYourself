@@ -33,12 +33,12 @@
 
     <div class = "field">
       <%= f.label :opening_time %>
-      <%= f.input :opening_time, as: :time, minute_step: 30 %>
+      <%= f.time_field :opening_time %>
     </div>
 
     <div class = "field">
       <%= f.label :closing_time %>
-      <%= f.input :closing_time, as: :time, minute_step: 30 %>
+      <%= f.time_field :closing_time %>
     </div>
 
     <div class = "actions">

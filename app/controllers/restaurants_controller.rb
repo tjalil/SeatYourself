@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
 
-  before_action :load_restaurant_owner, only: [:create, :edit, :update, :destroy]
+  before_action :load_restaurant_owner, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @restaurants = Restaurant.all
@@ -8,10 +8,6 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find(params[:id])
-
-    if current_user
-      @reservation = @restaurant.reservations.build
-    end
   end
 
   def new

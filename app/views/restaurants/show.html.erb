@@ -1,6 +1,7 @@
 <div class = "show-restaurant" style = "text-align: center">
   <h1><%= @restaurant.name %></h1>
   <em><p style = "font-weight: bold"><%= @restaurant.address %></p></em>
+  <em><p style = "font-weight: bold"><%= @restaurant.opening_time.strftime('%l:%M %P') %> - <%= @restaurant.closing_time.strftime('%l:%M %P') %></p></em>
 
   <p style = "margin: 0 24% 0"><%= @restaurant.description %></p>
 
