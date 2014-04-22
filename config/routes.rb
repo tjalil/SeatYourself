@@ -9,7 +9,7 @@ Seatyourself::Application.routes.draw do
   resources :restaurants, only: [:index, :show]
 
   resources :users do
-    # resources :reservations
+    resources :reservations
   end
 
   resources :user_sessions, only: [:new, :create, :destroy]
