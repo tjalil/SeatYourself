@@ -1,0 +1,31 @@
+<h3>Make a reservation</h3>
+
+<%= form_for [@restaurant, @reservation] do |f| %>
+  <% if @reservation.errors.any? %>
+    <div id = "errors_explanation">
+      <h2>
+        <%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being created
+      </h2>
+      <ul>
+        <% @reservation.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class = "field">
+    <%= f.label "Available Timeslots" %><br>
+    <%#= f.select :category_id, options_from_collection_for_select(Category.order(:name), :id, :name), include_blank: true %>
+  </div>
+
+  <div class = "field">
+    <%= f.label :party_size %>
+    <%= f.number_field :party_size %>
+  </div>
+
+  <div class = "actions">
+    <%= f.submit "Reserve Table!" %>
+  </div>
+
+<% end  %>
