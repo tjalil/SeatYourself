@@ -6,9 +6,9 @@ Seatyourself::Application.routes.draw do
     resources :restaurants, except: [:index]
   end
 
-  resources :restaurants, only: [:index, :show]
+  resources :users 
 
-  resources :users do
+  resources :restaurants, only: [:index, :show] do
     resources :reservations
   end
 
