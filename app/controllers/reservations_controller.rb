@@ -1,23 +1,24 @@
 class ReservationsController < ApplicationController
 
-  before_action :load_user, only: [:new, :create]
+  # before_action :load_user, only: [:new, :create]
 
-  def show
-    @reservation = Reservation.find(params[:id])
-  end
+  # def show
+  #   @reservation = Reservation.find(params[:id])
+  # end
 
   def new
     @reservation = Reservation.new
   end
 
   def create
-    @reservation = @user.reservations.build(reservation_params)
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @reservation = @restaurant.reservations.build(reservation_params)
     @reservation.user_id = current_user.id
 
     if @reservation.save
-      redirect_to user_show(@reservation.user_id), notice: "Successfully created your reservation"
+      redirect_to user_path(@reservation), notice: "Successfully created your reservation"
     else
-      render :new
+      render "restaurants/show"
     end
   end
 
@@ -27,8 +28,8 @@ class ReservationsController < ApplicationController
     params.require(:reservation).permit(:reservation_time, :party_size, :restaurant_id)
   end
 
-  def load_user
-    @user = User.find(params[:user_id])
-  end
+  # def load_user
+  #   @user = User.find(params[:id])
+  # end
 
 end

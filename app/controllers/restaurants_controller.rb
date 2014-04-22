@@ -29,11 +29,11 @@ class RestaurantsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  # def edit
+  # end
 
-  def update
-  end
+  # def update
+  # end
 
   def destroy
     @restaurant = @restaurant.find(params[:id])
