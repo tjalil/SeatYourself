@@ -6,7 +6,7 @@
   <p style = "margin: 0 24% 0"><%= @restaurant.description %></p>
 
   <% if current_user %>
-    #do another thing
+    <%= render "reservations/new" %>
   <% elsif current_restaurant_owner %>
     #do something
   <% end %>
