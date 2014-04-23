@@ -2,9 +2,11 @@
 
 <% if current_user.reservations.empty? %>
   <p>You currently don't have any reservations</p>
-  <%= link_to "Reserve a table", restaurants_path %>
-<% end  %>  
-
-<%= current_user.reservations.each do |reservation| %>
-  <%= reservation[:party_size] %>
+  <%= link_to "Make a reservation", restaurants_path %>
+<% else %>  
+  <%= current_user.reservations.each do |reservation| %>
+    <%= reservation[:party_size] %>
+    <p>____________________________________________</p>
+    <%= link_to "Add another reservation", restaurants_path %>
+  <% end %>
 <% end %>
