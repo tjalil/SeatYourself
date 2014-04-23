@@ -1,1 +1,10 @@
 <br><h1>User HomePage</h1>
+
+<% if current_user.reservations.empty? %>
+  <p>You currently don't have any reservations</p>
+  <%= link_to "Reserve a table", restaurants_path %>
+<% end  %>  
+
+<%= current_user.reservations.each do |reservation| %>
+  <%= reservation[:party_size] %>
+<% end %>

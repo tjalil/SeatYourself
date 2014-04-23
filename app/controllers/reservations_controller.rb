@@ -1,7 +1,5 @@
 class ReservationsController < ApplicationController
 
-  # before_action :load_user, only: [:new, :create]
-
   # def show
   #   @reservation = Reservation.find(params[:id])
   # end
@@ -27,9 +25,5 @@ class ReservationsController < ApplicationController
   def reservation_params
     params.require(:reservation).permit(:reservation_time, :party_size, :restaurant_id)
   end
-
-  # def load_user
-  #   @user = User.find(params[:id])
-  # end
 
 end
