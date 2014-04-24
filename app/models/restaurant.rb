@@ -4,7 +4,7 @@ class Restaurant < ActiveRecord::Base
   has_many :users, through: :reservations
   belongs_to :restaurant_owner
 
-  validates_presence_of :name, :address, :description
+  validates_presence_of :name, :address, :description, :opening_time, :closing_time
   before_save :name_capitalize
 
   private
