@@ -5,6 +5,9 @@
   <%= link_to "Make a reservation", restaurants_path %>
 <% else %>  
   <%= current_user.reservations.each do |reservation| %>
+
+    <%# need to add reservation time %>
+
     <%= reservation[:party_size] %>
     <p>____________________________________________</p>
     <%= link_to "Add another reservation", restaurants_path %>

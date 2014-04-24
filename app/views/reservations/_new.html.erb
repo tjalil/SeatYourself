@@ -16,11 +16,11 @@
 
   <div class = "field">
     <%= f.label "Available Timeslots" %><br>
-    <%#= f.select :category_id, options_from_collection_for_select(Category.order(:name), :id, :name), include_blank: true %>
+    <%= f.select :restaurant_id, options_for_select(@time_slots_array), include_blank: true %>
   </div>
 
   <div class = "field">
-    <%= f.label :party_size %><br>
+    <%= f.label "People (2 to 20)" %><br>
     <%= f.number_field :party_size %>
   </div>
 
